@@ -1,8 +1,9 @@
 import './App.css'
+import { useState } from 'react'
 
 const TURNS = {
-  X: 'x',
-  O: 'o'
+  X: '❌',
+  O: '⭕'
 }
 
 const Square = ({ children, updateBoard, index}) => {
@@ -14,7 +15,9 @@ const Square = ({ children, updateBoard, index}) => {
 }
 
 function App() {
-  const board = Array(9).fill(null)
+  const [board, setBoard] = useState(
+    ['x','x','x','o','o','o','x','o','x']
+  )
 
   return (
     <main className='board'>
@@ -24,7 +27,7 @@ function App() {
           board.map((_, index) => {
             return (
               <Square key={index}>
-                
+                {board[index]}
               </Square>
             )
           })
